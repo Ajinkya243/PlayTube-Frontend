@@ -1,0 +1,21 @@
+.link{
+    text-decoration: none;
+    color: black;
+}
+.navbar{
+    padding: 10px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.search{
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
+@media(max-width:768px){
+    .search{
+        display: none;
+    }
+}
