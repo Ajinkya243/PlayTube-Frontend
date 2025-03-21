@@ -1,0 +1,33 @@
+.sidebar{
+    width: 270px;
+    height: 100vh;
+    position: fixed;
+}
+
+.tags{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    padding: 0 25px;
+    text-decoration: none;
+    color: black;
+}
+
+.tags:hover{
+    background-color: lightgray;
+    border-radius: 5px;
+}
+
+@media(max-width:768px){
+    .sidebar{
+        position:fixed;
+        left:0;
+        bottom: 0;
+        display: flex;
+        height: auto;
+        width: 100%;
+    }
+    .sidebar>*{
+        flex-grow: 1;
+    }
+}
