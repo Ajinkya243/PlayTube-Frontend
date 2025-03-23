@@ -4,14 +4,25 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import {Provider} from 'react-redux'
+import store from './utils/redux/store/store';
+import SingleVideo from './pages/single video/SingleVideo';
+import GlobalStateProvider from './utils/context/GlobalStateProvider';
+import History from './pages/history/History';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
+    <Provider store={store}>
+      <GlobalStateProvider>
     <Routes>
       <Route path="/" element={<App/>} />
+      <Route path="/videos/:id" element={<SingleVideo/>} />
+      <Route path="/videos/history" element={<History/>}/>
     </Routes>
+    </GlobalStateProvider>
+    </Provider>
     </BrowserRouter>
   </React.StrictMode>
 );
