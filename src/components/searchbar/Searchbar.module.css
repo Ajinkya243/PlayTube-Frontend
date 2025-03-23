@@ -3,3 +3,8 @@
     border-radius: 10px;
     width: 50%;
 }
+.clear{
+    background-color: red;
+    color: white;
+    border-radius: 5px;
+}
