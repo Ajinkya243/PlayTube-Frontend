@@ -12,7 +12,7 @@ const Sidebar=()=>{
         <FontAwesomeIcon icon={faHouse} size="xl" style={{color: "#000000",}} />
         <p>Home</p>
         </Link>
-        <Link className={classes.tags}>
+        <Link className={classes.tags} to="/videos/history">
         <FontAwesomeIcon icon={faClockRotateLeft} size="xl" style={{color: "#000000",}} />
         <p>History</p>
         </Link>

@@ -1,9 +1,12 @@
-.sidebar{
+
+.sidebar {
     width: 270px;
     height: 100vh;
     position: fixed;
+    margin-top: 100px;
+    left: 0;
+    background-color: white;
 }
-
 .tags{
     display: flex;
     gap: 20px;
@@ -18,7 +21,7 @@
     border-radius: 5px;
 }
 
-@media(max-width:768px){
+/* @media(max-width:768px){
     .sidebar{
         position:fixed;
         left:0;
@@ -30,4 +33,26 @@
     .sidebar>*{
         flex-grow: 1;
     }
+} */
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;  
+        left: 0;
+        bottom: 0;  
+        width: 100vw;
+        height: 60px;  
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background: white;
+        z-index: 1000;
+        border-top: 1px solid #ddd;
+        padding: 10px 0;
+    }
+
+    .sidebar > * {
+        flex-grow: 1;
+        text-align: center;
+    }
 }
+
