@@ -1,0 +1,15 @@
+.player{
+    margin-left: 300px;
+    padding-top: 120px;
+    max-width: 100%;
+}
+.player>*{
+    margin: 0 auto;
+}
+
+@media(max-width:768px){
+    .player{
+        margin: 0;
+        height: 400px;
+    }
+}
