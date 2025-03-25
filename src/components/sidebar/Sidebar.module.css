@@ -50,7 +50,7 @@
         width: 100vw;
         height: auto;  
         display: flex;
-        gap: 35px;
+        justify-content: space-evenly;
         align-items: center;
         background: white;
         z-index: 1000;
@@ -59,11 +59,15 @@
         box-sizing: border-box;
     }
 
-    .sidebar > * {
-        flex-shrink: 1;
-        text-align: center;
-        width: 5px;
-        font-size: 10px;
+    
+}
+@media(max-width:576px){
+    .sidebar{
+        gap: 15px;
+        justify-content: space-between;
+    }
+    .sidebar p{
+        display: none;
     }
 }
 
