@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useGlobalState } from "../../utils/context/GlobalStateProvider";
 import useDebounce from "../../utils/debounce/useDebounce";
+import ClipLoader from "react-spinners/ClipLoader";
 const Videos=()=>{
     const{input}=useGlobalState();
     const searchInput=useDebounce(input);
@@ -23,6 +24,7 @@ const Videos=()=>{
             <button onClick={handleCategory} value="trailer" className={category==='trailer'?classes.active:''}>Trailer</button>
             </div>
             <div className={classes['videos-grid']}>
+            {status==='pending' && filterVideos.length===0 && <div className={classes.loader}><ClipLoader/></div>}
             {filterVideos?.length>0 && filterVideos?.map(el=>(
                 <Link to={`/videos/${el._id}`} style={{textDecoration:'none',color:'black'}} state={{el}} key={el._id}>
                 <div className={classes['grid-item']}>
