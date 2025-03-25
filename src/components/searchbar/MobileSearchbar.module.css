@@ -6,14 +6,15 @@
 
 @media(max-width:768px){
     .mobilebar{
+        box-sizing: border-box;
         display: inline;
         padding: 10px;
         border-radius: 10px;
-        margin: 10px 20px;
+        margin: 10px 0;
         position: fixed;
         top: 60px;
         left: 0;
-        width: 95vw;
+        width: 100vw;
         background: white;
         z-index: 999;
     }
