@@ -20,6 +20,15 @@
 }
 .user-icon{
     margin-right: 60px;
+    padding:10px;
+    color: black;
+    text-decoration: none;
+}
+.user-icon:hover{
+    background-color: lightgrey;
+    border-radius: 50px;
+    transform: scale(1.1);
+    transition: transform 0.3s ease-in-out;
 }
 
 @media(max-width:768px){

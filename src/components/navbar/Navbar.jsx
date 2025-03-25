@@ -1,26 +1,30 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faYoutube} from "@fortawesome/free-brands-svg-icons"; 
 import { faUser } from "@fortawesome/free-solid-svg-icons";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import classes from './Navbar.module.css'
 import Searchbar from "../searchbar/Searchbar";
 import MobileSearchbar from "../searchbar/MobileSearchbar";
+import { useSelector } from "react-redux";
 
 const Navbar=()=>{
-    const{id}=useParams();
-   
+    const location=useLocation();
+    const isHomePage=location.pathname==='/';
+    
+    const{user}=useSelector(state=>state.users);
     return(
         <>
         <nav className={classes.navbar}>
         <Link to="/" className={classes.link}><h2 className="classes"><FontAwesomeIcon icon={faYoutube} size="xl" style={{color: "#ff0000",}} />PlayTube</h2></Link>
         <div className={classes.search}>
-        {!id && <Searchbar />}
+        {isHomePage && <Searchbar />}
         </div>
-        <Link className={classes['user-icon']}>
+        <Link className={classes['user-icon']} to="/videos/profile">
         <FontAwesomeIcon icon={faUser} size="xl" style={{color: "#000000",}} />
+        <span>{user.userName}</span>
         </Link>
         </nav>
-        {!id&&<MobileSearchbar/>}
+        {isHomePage&&<MobileSearchbar/>}
         
         </>
     )
