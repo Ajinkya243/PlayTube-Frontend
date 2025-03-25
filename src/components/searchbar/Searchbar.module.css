@@ -1,10 +1,14 @@
 .input{
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 50px;
     width: 50%;
 }
 .clear{
-    background-color: red;
+    background-color:black;
     color: white;
-    border-radius: 5px;
+    border-radius: 15px;
+    width: 70px;
+}
+.clear:hover{
+    background-color: red;
 }

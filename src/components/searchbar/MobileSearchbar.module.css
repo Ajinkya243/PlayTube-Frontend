@@ -1,5 +1,4 @@
 .mobilebar{
-    width: 100%;
     display: none;
 }
 
@@ -7,14 +6,14 @@
 
 @media(max-width:768px){
     .mobilebar{
-        display: block;
+        display: inline;
         padding: 10px;
         border-radius: 10px;
-        margin: 10px 10px;
+        margin: 10px 20px;
         position: fixed;
         top: 60px;
         left: 0;
-        width: 95%;
+        width: 95vw;
         background: white;
         z-index: 999;
     }
