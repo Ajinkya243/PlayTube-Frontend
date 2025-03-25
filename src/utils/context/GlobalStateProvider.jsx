@@ -4,12 +4,17 @@ const GlobalStateContext=createContext();
 
 const GlobalStateProvider=({children})=>{
     const[input,setInput]=useState();
-
+    const[currentPage,setCurrentPage]=useState("All");
+    
     return(
         <GlobalStateContext.Provider 
         value={{
             input,
-            setInput
+            setInput,
+            currentPage,
+            setCurrentPage,
+            // user,
+            // setUser
         }}
         >
             {children}
