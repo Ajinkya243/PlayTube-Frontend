@@ -7,9 +7,9 @@ export const fetchVideoData=createAsyncThunk('fetch/videos',async()=>{
 })
 
 export const videoDataSlice=createSlice({
-    name:'videoData',
+    name:'videos',
     initialState:{
-        videoData:[],
+        videos:[],
         status:'idle',
         error:null
     },
@@ -21,7 +21,7 @@ export const videoDataSlice=createSlice({
         })
         .addCase(fetchVideoData.fulfilled,(state,action)=>{
             state.status='fulfilled'
-            state.videoData=action.payload
+            state.videos=action.payload
         })
         .addCase(fetchVideoData.rejected,state=>{
             state.status='rejected'
