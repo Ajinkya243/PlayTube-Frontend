@@ -20,13 +20,17 @@
         display: block;
         height: auto;
     }
+    .list{
+        width: 100% !important;
+    }
+   
+    
     
 }
 .img{
     width: 20%;
     position: relative;
-    padding: 10px;
-    
+    height: 250px;
 }
 .img img{
     max-width: 100%;
@@ -38,10 +42,21 @@
     width: 100%;
     text-align: center;
     margin: 0;
-    bottom: 50;
     left:0;
+    bottom: 40px;
     color: white;
     background-color:rgba(0, 0, 0, 0.5);
+}
+.img button{
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid red;
+    background-color: white;
+}
+.img button:hover{
+    background-color: red;
+    color: white;
 }
 .columns-flex{
     display:flex;
@@ -49,7 +64,7 @@
 }
 
 .list{
-    max-width:90%;
+    width:90%;
     margin-top: 15px;
 }
 .delete{
@@ -75,13 +90,25 @@
 }
 
 .video:hover{
-    background-color: grey;
-    color: white;
+    background-color: lightgrey;
+    border-radius: 15px;
 }
 .video-link{
     text-decoration: none;
     color: black;
 }
 .video-link:hover{
+    color: #007bff;
+}
+.btn{
+    padding: 10px;
     color: white;
+    background-color: rgb(36, 217, 214);
+    border: none;
+    border-radius: 5px;
+}
+.btn:hover{
+    background-color: rgb(66, 204, 84);
+    color: black;
+    cursor:pointer;
 }
