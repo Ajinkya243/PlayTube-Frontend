@@ -8,20 +8,26 @@ import { setCurrentUser } from '../../utils/redux/slice/usersSlice';
 const Login=()=>{
     const[email,setEmail]=useState('');
     const[password,setPassword]=useState('');
+    const trialUser={email,password,userName:'John_Wick'}
     const{users}=useSelector(state=>state.users);
     const navigate=useNavigate();
     const dispatch=useDispatch();
     const handleLogin=(event)=>{
         event.preventDefault();
-        const user=users.find(el=>el.email===email && el.password===password);
-        if(user){
-            dispatch(setCurrentUser(user));
+        const existUser=users.find(el=>el.email===email && el.password===password);
+        if(existUser){
+            dispatch(setCurrentUser(existUser));
             toast.success('login succesfully');
             setTimeout(()=>{
                 navigate("/");
-            },1500)
-
-            
+            },1500)   
+        }
+        else if(trialUser.email){
+            dispatch(setCurrentUser(trialUser));
+            toast.success('login succesfully');
+            setTimeout(()=>{
+                navigate("/");
+            },1500)  
         }
         else{
             toast.error('Invalid credentials')
