@@ -9,7 +9,7 @@ const Videos=()=>{
     const searchInput=useDebounce(input);
     const {videos,status}=useSelector(state=>state.videos);
     const[category,setCategory]=useState('All');
-    const filterVideos=videos.filter(el=>(category==='All'||el.category===category) && (searchInput==undefined || el.title.toLowerCase().includes(searchInput.trim().toLowerCase())) );
+    const filterVideos=videos?.filter(el=>(category==='All'||el.category===category) && (searchInput===undefined || el.title.toLowerCase().includes(searchInput.trim().toLowerCase())) );
     const handleCategory=(event)=>{
         setCategory(event.target.value)
     }
@@ -23,7 +23,7 @@ const Videos=()=>{
             <button onClick={handleCategory} value="trailer" className={category==='trailer'?classes.active:''}>Trailer</button>
             </div>
             <div className={classes['videos-grid']}>
-            {filterVideos.length>0 && filterVideos.map(el=>(
+            {filterVideos?.length>0 && filterVideos?.map(el=>(
                 <Link to={`/videos/${el._id}`} style={{textDecoration:'none',color:'black'}} state={{el}} key={el._id}>
                 <div className={classes['grid-item']}>
                     <img  src={el.thumbnail} alt="" className={classes['grid-img']} />

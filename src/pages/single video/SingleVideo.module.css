@@ -2,9 +2,54 @@
     margin-left: 300px;
     padding-top: 120px;
     max-width: 100%;
+    overflow-x: hidden;
 }
 .player>*{
     margin: 0 auto;
+}
+
+.creator{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.creator img{
+    border-radius: 50%;
+}
+.creator p,h3{
+    margin: 0;
+}
+
+.btns{
+    display: flex;
+    gap: 20px;
+}
+
+.btn{
+    border: none;
+    background-color: white;
+    padding: 10px;
+    border-radius: 50px;
+    width: 100px;
+    background-color: rgb(195, 190, 190);
+}
+.btn:hover{
+    background-color:lightgrey;
+    cursor: pointer;
+    /* transform: scale(1.05); */
+    transform: translateY(-5px);
+    transition: transform 0.3s ease-in-out;
+}
+.details{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.description{
+    background-color: rgb(225, 224, 224);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 20px 0;
 }
 
 @media(max-width:768px){
@@ -12,4 +57,59 @@
         margin: 0;
         height: 400px;
     }
+}
+.comment{
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid black;
+    margin: 20px 0;
+}
+.commentbtn{
+    display: flex;
+    gap: 10px;
+    margin: 10px;
+}
+.clear-btn{
+    border: none;
+    width: 90px;
+    background-color: lightgrey;
+    border-radius:10px;
+    color: black;
+    padding: 10px;
+    margin-left: auto;
+}
+.clear-btn:hover{
+    background-color: red;
+    color: white;
+    transform: translateY(-5px);
+    transition: transform 0.3s ease-in-out;
+}
+.cmt-btn{
+border:none;
+width: 90px;
+padding:10px;
+border-radius: 10px;
+background-color:#28A745;
+color: white;
+}
+.cmt-btn:hover{
+    background-color: #4ed66d;
+    color: black;
+    transform: translateY(-5px);
+    transition: transform 0.3s ease-in-out;
+}
+.comment-data{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.trash{
+    margin-left: auto;
+    margin-right: 20px;
+}
+.trash:hover{
+    cursor: pointer;
+    transform: scale(1.1); /* Slightly enlarges the element */
+    transition: transform 0.3s ease-in-out;
 }
