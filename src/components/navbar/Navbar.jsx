@@ -21,7 +21,7 @@ const Navbar=()=>{
         </div>
         <Link className={classes['user-icon']} to="/videos/profile">
         <FontAwesomeIcon icon={faUser} size="xl" style={{color: "#000000",}} />
-        <span>{user.username}</span>
+        <span>{user.userName}</span>
         </Link>
         </nav>
         {isHomePage&&<MobileSearchbar/>}

@@ -59,7 +59,7 @@ const History=({tab})=>{
     }
     useEffect(()=>{
         setCurrentPage(tab);
-        if(!user.username){
+        if(!user.userName){
             navigate("/videos/login")
         }
     },[tab,user])

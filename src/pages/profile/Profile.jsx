@@ -13,15 +13,15 @@ const Profile=()=>{
         dispatch(setCurrentUser({}));
     }
     useEffect(()=>{
-        if(!user.username){
+        if(!user.userName){
             navigate("/videos/login");
         }
     },[user]);
     return(
         <>
         <Navbar/>
-        {user.username&&<div className={classes.profile}>
-            <h2>Welcome back {user.username}</h2>
+        {user.userName&&<div className={classes.profile}>
+            <h2>Welcome back {user.userName}</h2>
             <button onClick={handleLogout}>Logout</button>
         </div>}
         </>
