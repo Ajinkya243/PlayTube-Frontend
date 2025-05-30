@@ -1,20 +1,48 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from 'axios';
+export const loginUser=createAsyncThunk('login/user',async({email,password})=>{
+    const response=await axios.post("https://play-tube-backend-sigma.vercel.app/user/login",{email,password});
+    return response.data;
+})
+
+export const signupUser=createAsyncThunk('signup/user',async({email,username,password})=>{
+    const response=await axios.post("https://play-tube-backend-sigma.vercel.app/add-user",{email,username,password});
+    return response;
+})
 
 export const usersSlice=createSlice({
     name:'users',
     initialState:{
         users:[],
-        user:{}
+        user:{},
+        status:'idle',
+        error:null
     },
     reducers:{
-        addUser:(state,action)=>{
-            const{userName,password,email}=action.payload;
-            state.users.push({userName,password,email});
-        },
         setCurrentUser:(state,action)=>{
             state.user=action.payload
         }
+    },
+    extraReducers:(builder)=>{
+        builder.addCase(loginUser.pending,state=>{
+            state.status="pending"
+        })
+        .addCase(loginUser.fulfilled,(state,action)=>{
+            state.status="fulfilled" 
+        })
+        .addCase(loginUser.rejected,state=>{
+            state.status="rejected"
+        })
+        .addCase(signupUser.pending,state=>{
+            state.status='pending'
+        })
+        .addCase(signupUser.fulfilled,state=>{
+            state.status="fulfilled"
+        })
+        .addCase(signupUser.rejected,state=>{
+            state.status='rejected'
+        })
     }
 })
-export const{addUser,setCurrentUser}=usersSlice.actions;
+export const{setCurrentUser}=usersSlice.actions;
 export default usersSlice.reducer;

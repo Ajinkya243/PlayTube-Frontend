@@ -59,7 +59,7 @@ const History=({tab})=>{
     }
     useEffect(()=>{
         setCurrentPage(tab);
-        if(!user.userName){
+        if(!user.username){
             navigate("/videos/login")
         }
     },[tab,user])
@@ -71,19 +71,19 @@ const History=({tab})=>{
         <div className={classes['columns-flex']}>
             {filterVideos.length>0 && <div className={classes.img}>
             <h2>{tab} Page</h2>
-            <img src={filterVideos[0]?.video.thumbnail} alt="" />
+            <img src={filterVideos[0]?.video?.thumbnail} alt="" />
             {filterVideos.length>0&&<p>{filterVideos.length} Videos</p>}
             <button onClick={handleData}>Clear</button>
             </div>}
             <div className={classes.list}>
                 {filterVideos.length>0 && filterVideos.map(el=>(
                     <div className={classes.video} >
-                        <Link to={`/videos/${el.video._id}`} className={classes['video-link']} state={{el:el.video}} >
+                        <Link to={`/videos/${el.video?._id}`} className={classes['video-link']} state={{el:el.video}} >
                         <div style={{display:'flex',alignItems:'start',gap:'10px'}}>
-                        {el.video.thumbnail && <img src={el.video.thumbnail} alt="image" width={150} height={100} />}
+                        {el.video?.thumbnail && <img src={el.video.thumbnail} alt="image" width={150} height={100} />}
                         <div >
-                        <p >{el.video.title}</p>
-                        <p >{el.video.creatorName}</p>
+                        <p >{el.video?.title}</p>
+                        <p >{el.video?.creatorName}</p>
                         </div>
                         </div>
                         </Link> 

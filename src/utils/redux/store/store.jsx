@@ -8,15 +8,11 @@ import likesReducer from '../slice/likesSlice';
 import usersReducer from '../slice/usersSlice';
 import watchLaterReducer from '../slice/watchLaterSlice';
 
-// const videosPersistConfig={
-//     key:"videos",
-//     storage,
-//     whitelist:['videos']
-// }
+
 const videoDataPersistConfig={
     key:"videos",
     storage,
-    whitelist:['videoData']
+    whitelist:['videos']
 }
 const commentPersistConfig={
     key:'comments',
@@ -36,7 +32,7 @@ const likesPersistConfig={
 const usersPersistConfig={
     key:'users',
     storage,
-    whitelist:['users','user']
+    whitelist:['users','user','status']
 }
 const watchlaterPersistConfig={
     key:'watchLater',
