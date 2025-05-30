@@ -5,8 +5,8 @@ export const loginUser=createAsyncThunk('login/user',async({email,password})=>{
     return response.data;
 })
 
-export const signupUser=createAsyncThunk('signup/user',async({email,username,password})=>{
-    const response=await axios.post("https://play-tube-backend-sigma.vercel.app/add-user",{email,username,password});
+export const signupUser=createAsyncThunk('signup/user',async({email,userName,password})=>{
+    const response=await axios.post("https://play-tube-backend-sigma.vercel.app/add-user",{email,userName,password});
     return response;
 })
 

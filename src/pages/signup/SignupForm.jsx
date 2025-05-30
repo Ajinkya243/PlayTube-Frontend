@@ -7,7 +7,7 @@ import {signupUser } from "../../utils/redux/slice/usersSlice";
 import { toast } from "react-toastify";
 import { ClipLoader } from "react-spinners";
 const SignupForm=()=>{
-    const[username,setUsername]=useState("");
+    const[userName,setUserName]=useState("");
     const[email,setEmail]=useState("");
     const[password,setPassword]=useState("");
     const{status}=useSelector(state=>state.users);
@@ -15,7 +15,7 @@ const SignupForm=()=>{
     const navigate=useNavigate();
     const handleSignup=async(event)=>{
         event.preventDefault();
-        const response=await dispatch(signupUser({email,username,password}));
+        const response=await dispatch(signupUser({email,userName,password}));
         if(response.payload.status===201){
           toast.success("Register Successfully");
           navigate('/videos/login');
@@ -33,7 +33,7 @@ const SignupForm=()=>{
             <h2>Signup</h2>
             <div>
                 <label htmlFor="inputUser">UserName:</label>
-                <input type="text" id="inputUser" value={username} onChange={event=>setUsername(event.target.value)}/>
+                <input type="text" id="inputUser" value={userName} onChange={event=>setUserName(event.target.value)}/>
             </div>
             <div>
                 <label htmlFor="inputEmail">Email:</label>
