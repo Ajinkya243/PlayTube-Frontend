@@ -9,18 +9,19 @@ const Profile=()=>{
     const navigate=useNavigate();
     const dispatch=useDispatch();
     const handleLogout=()=>{
+        localStorage.removeItem('token');
         dispatch(setCurrentUser({}));
     }
     useEffect(()=>{
-        if(!user.userName){
+        if(!user.username){
             navigate("/videos/login");
         }
     },[user]);
     return(
         <>
         <Navbar/>
-        {user.userName&&<div className={classes.profile}>
-            <h2>Welcome back {user.userName}</h2>
+        {user.username&&<div className={classes.profile}>
+            <h2>Welcome back {user.username}</h2>
             <button onClick={handleLogout}>Logout</button>
         </div>}
         </>
