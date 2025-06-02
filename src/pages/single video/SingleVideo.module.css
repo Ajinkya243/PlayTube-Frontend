@@ -114,3 +114,8 @@ color: white;
     transform: scale(1.1); /* Slightly enlarges the element */
     transition: transform 0.3s ease-in-out;
 }
+.loader{
+    display: flex;
+    justify-content: center;
+    padding: 70px;
+}
