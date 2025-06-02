@@ -1,10 +1,10 @@
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Navbar from "../../components/navbar/Navbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import ReactPlayer from 'react-player'
 import classes from './SingleVideo.module.css'
 import ClipLoader from "react-spinners/ClipLoader"; 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addComment, deleteComment } from "../../utils/redux/slice/commentSlice";
 import { addToLikes } from "../../utils/redux/slice/likesSlice";
@@ -12,24 +12,30 @@ import { addHistory } from "../../utils/redux/slice/historySlice";
 import { addTowatchLater } from "../../utils/redux/slice/watchLaterSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock, faThumbsUp, faCircleUser, faTrash } from "@fortawesome/free-solid-svg-icons";
-import {toast} from 'react-toastify'
-;
+import {toast} from 'react-toastify';
+import { fetchVideo, clearVideo } from "../../utils/redux/slice/videoDataSlice";
+import { useMemo } from 'react';
 const SingleVideo=()=>{
     const{user}=useSelector(state=>state.users);
-    const location=useLocation();
-    const video=location.state.el;
+    const{id}=useParams();
+    const{video}=useSelector(state=>state.videos);
     const dispatch=useDispatch();
     const{comments}=useSelector(state=>state.comments);
-    const videoData=comments.filter(el=>el?.videoId===video.videoId);
     const[commentData,setComment]=useState("");
-    const handleClear=()=>{
-        setComment('');
+    const videoData = useMemo(() => {
+    if (video?._id) {
+        return comments.filter(el => el?.videoId === video.videoId);
     }
-    const handleComment=()=>{
+    return [];
+}, [video, comments]);
+    const handleClear=useCallback(()=>{
+        setComment('');
+    },[])
+    const handleComment=useCallback(()=>{
         dispatch(addComment({id:comments.length,videoId:video.videoId,userName:user.userName,text:commentData}));
         setComment('');
-    }
-    const handleLike=()=>{
+    },[commentData, comments.length, dispatch, user.userName, video.videoId])
+    const handleLike=useCallback(()=>{
         if(user.userName){
             dispatch(addToLikes({userName:user.userName,video}));
         toast.success('You like this video')
@@ -38,8 +44,8 @@ const SingleVideo=()=>{
             toast.error('Please login to like this video')
         }
         
-    }
-    const handleWatchLater=()=>{
+    },[dispatch, user.userName, video])
+    const handleWatchLater=useCallback(()=>{
         if(user.userName){
             dispatch(addTowatchLater({userName:user.userName,video}));
         toast.success('Video added to watch later');
@@ -48,20 +54,29 @@ const SingleVideo=()=>{
             toast.error('Please login to add to watch later')
         }
         
-    }
+    },[dispatch, user.userName, video])
     const handleDeleteComment=(index)=>{
         const filterComments=comments.filter((el,i)=>i!==index);
         dispatch(deleteComment(filterComments))
     }
    useEffect(()=>{
+    dispatch(fetchVideo(id));
+    return ()=>{
+        dispatch(clearVideo())
+    }
+   },[dispatch, id])
+   useEffect(()=>{
+    if(video._id){
     dispatch(addHistory({userName:user.userName,video})); 
-   },[])
+    }
+   },[dispatch, user.userName, video])
+   console.log(video)
     return(
         <>
         <Navbar/>
         <Sidebar/>
         <div className={classes.player}>
-         {video?<div><ReactPlayer 
+         {video?._id?<div><ReactPlayer 
          url={`https://www.youtube.com/watch?v=${video.videoId}`}
          controls
          width={'100%'}
@@ -88,7 +103,7 @@ const SingleVideo=()=>{
          </div>
          <hr />
          <div>
-            <h3>{videoData?.length} Comments:</h3>
+            <h3>{videoData?.length?videoData.length:''} Comments:</h3>
             {user.userName ?<input type="text" className={classes.comment} placeholder="Add a comment" onChange={event=>setComment(event.target.value)} value={commentData}/>:<p>Please login to add comments</p>}
             {commentData && <div className={classes.commentbtn}>
                 <button className={classes['clear-btn']} onClick={handleClear}>Clear</button>
@@ -98,7 +113,7 @@ const SingleVideo=()=>{
                 <div className={classes['comment-data']}>
                     <FontAwesomeIcon icon={faCircleUser} size="2xl" style={{color: "#74C0FC",}} />
                     <div>
-                    <p>@{el.userName}</p>
+                    <p>@{el.userName} {new Date().toDateString()}</p>
                     <p>{el.text}</p>
                     
                     </div>
@@ -108,7 +123,7 @@ const SingleVideo=()=>{
                 </div>
             ))}     
          </div>
-         </div>:<ClipLoader/>}
+         </div>:<div className={classes.loader}><ClipLoader size={100}/></div>}
         </div>
         </>
     )

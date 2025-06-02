@@ -12,7 +12,7 @@ import watchLaterReducer from '../slice/watchLaterSlice';
 const videoDataPersistConfig={
     key:"videos",
     storage,
-    whitelist:['videos']
+    whitelist:['videos','video']
 }
 const commentPersistConfig={
     key:'comments',
