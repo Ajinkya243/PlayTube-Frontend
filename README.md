@@ -46,3 +46,15 @@ Backend repository - https://github.com/Ajinkya243/PlayTube-Backend
 - CORS, dotenv, bcrypt
 
 ---
+
+![image](https://github.com/user-attachments/assets/57330b63-eeb1-4fac-8a89-59f9d374ec72)
+
+![image](https://github.com/user-attachments/assets/0208349f-0ec7-4023-90c0-fff2861324e9)
+
+![image](https://github.com/user-attachments/assets/3702a746-eb95-44c5-afc5-f43dba342465)
+
+![image](https://github.com/user-attachments/assets/6e490e0c-6799-4e96-beec-0a72a9ab4141)
+
+
+
+
