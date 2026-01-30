@@ -15,6 +15,7 @@ import { faClock, faThumbsUp, faCircleUser, faTrash } from "@fortawesome/free-so
 import {toast} from 'react-toastify';
 import { fetchVideo, clearVideo } from "../../utils/redux/slice/videoDataSlice";
 import { useMemo } from 'react';
+import ShimmerUi from "./ShimmerUi";
 const SingleVideo=()=>{
     const{user}=useSelector(state=>state.users);
     const{id}=useParams();
@@ -123,7 +124,7 @@ const SingleVideo=()=>{
                 </div>
             ))}     
          </div>
-         </div>:<div className={classes.loader}><ClipLoader size={100}/></div>}
+         </div>:<ShimmerUi/>}
         </div>
         </>
     )
