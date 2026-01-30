@@ -6,6 +6,7 @@ import classes from "./Navbar.module.css";
 import Searchbar from "../searchbar/Searchbar";
 import MobileSearchbar from "../searchbar/MobileSearchbar";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 const Navbar = () => {
   const location = useLocation();
