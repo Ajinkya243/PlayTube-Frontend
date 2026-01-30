@@ -43,18 +43,18 @@ const Login=()=>{
     return(
         <div className={classes.login}>
             <Navbar/>
-            <form>
+            <form onSubmit={handleLogin}>
                 <div>
                 <label htmlFor="inputEmail">Email:</label><br />
-                <input type="email" id="inputEmail" value={email} onChange={event=>setEmail(event.target.value)}/>
+                <input type="email" id="inputEmail" required value={email} onChange={event=>setEmail(event.target.value)}/>
                 </div>
                 <br />
                 <div>
                     <label htmlFor="inputPassword">Password:</label><br />
-                    <input type="password" id="inputPassword" value={password} onChange={event=>setPassword(event.target.value)}/>
+                    <input type="password" id="inputPassword" required value={password} onChange={event=>setPassword(event.target.value)}/>
                 </div>
                 <br />
-                <button onClick={handleLogin}>{status === 'pending'? <ClipLoader
+                <button type='submit'>{status === 'pending'? <ClipLoader
   color="white"
   size={20}
 /> : "Login"}</button>

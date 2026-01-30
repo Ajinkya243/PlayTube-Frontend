@@ -29,21 +29,21 @@ const SignupForm=()=>{
         <>
         <Navbar/>
         <div className={classes.signup}>
-        <form>
+        <form onSubmit={handleSignup}>
             <h2>Signup</h2>
             <div>
                 <label htmlFor="inputUser">UserName:</label>
-                <input type="text" id="inputUser" value={userName} onChange={event=>setUserName(event.target.value)}/>
+                <input type="text" id="inputUser" required value={userName} onChange={event=>setUserName(event.target.value)}/>
             </div>
             <div>
                 <label htmlFor="inputEmail">Email:</label>
-                <input type="email" id="inputEmail" value={email} onChange={event=>setEmail(event.target.value)} />
+                <input type="email" id="inputEmail" required value={email} onChange={event=>setEmail(event.target.value)} />
             </div>
             <div>
                 <label htmlFor="inputPassword">Password:</label>
-                <input type="password" id="inputPassword" value={password} onChange={event=>setPassword(event.target.value)}/>
+                <input type="password" id="inputPassword" required value={password} onChange={event=>setPassword(event.target.value)}/>
             </div>
-            <button onClick={handleSignup}>{status === 'pending'? <ClipLoader
+            <button >{status === 'pending'? <ClipLoader
               color="white"
               size={20}
             /> : "Signup"}</button>

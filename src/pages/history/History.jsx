@@ -88,7 +88,7 @@ const History=({tab})=>{
                         </div>
                         </Link> 
                         <div className={classes.delete}>
-                        <FontAwesomeIcon icon={faTrash} size="xl" style={{color: "#ff0000",}} onClick={()=>handleDelete(el.video._id)} />
+                        <FontAwesomeIcon icon={faTrash} size="xl" onClick={()=>handleDelete(el.video._id)} />
                         </div>
                     </div>
                 ))}
